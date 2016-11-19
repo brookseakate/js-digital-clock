@@ -1,10 +1,12 @@
-var showTime = function() {
-  this.time = new Date();
-  return this.time.toLocaleTimeString();
+var showLocalTime = function() {
+  var time = new Date();
+  var displayTime = time.toLocaleTimeString();
+  return $('#clock').html('<h3>' + displayTime + '</h3>');
 };
 
 $(document).ready(function() {
-  var intervalID = window.setInterval( function() {
-    $('#clock').html(showTime);
-  }, 1000);
+  var intervalID = window.setInterval(showLocalTime, 1000);
 });
+
+// Date.prototype.getTimezoneOffset()
+// Returns the time-zone offset in minutes for the current locale.
